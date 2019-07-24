@@ -12,7 +12,7 @@ const useStyles = makeStyles({
         backgroundColor: '#fff',
         marginTop: 20,
         margin: 'auto',
-        opacity: .8,
+        opacity: .9,
         overflow: 'hidden',
     },
 });
