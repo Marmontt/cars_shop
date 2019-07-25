@@ -9,7 +9,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import {makeStyles} from '@material-ui/styles';
-import {useDispatch} from 'react-redux';
+// import {useDispatch} from 'react-redux';
 
 const useStyles = makeStyles({
     root: {
@@ -33,7 +33,7 @@ const useStyles = makeStyles({
 
 const CarCard = ({BrandName, ModelName, price, img}) => {
     const {root,btn, image, description} = useStyles();
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
     return (
         <Card className={root}>
