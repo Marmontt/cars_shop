@@ -26,7 +26,8 @@ const CarsList = () => {
 
     useEffect(() => {
         dispatch(getCarsList());
-    });
+// eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const carsList = useSelector(getCars);
 
@@ -40,8 +41,7 @@ const CarsList = () => {
                     carsList.map(({BrandName, ModelName, price, img}) =>
                         <Grid item xs={4} key={ModelName}>
                             <CarCard BrandName={BrandName} ModelName={ModelName} price={price} img={img}/>
-                        </Grid>)
-                }
+                        </Grid>)}
             </Grid>
         </Paper>
     )

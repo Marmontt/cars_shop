@@ -13,7 +13,7 @@ app.use(express.static(path.join(__dirname, 'build')));
 
 app.get('/api/cars', function (req, res) {
     let cars_list = [];
-    mongo.connect(uri,mongo_config, (err, client) => {
+    mongo.connect(uri, mongo_config, (err, client) => {
         if (err) console.log(err);
         client.db('cars_shop').collection('cars').find().forEach(car => {
             cars_list.push(car);

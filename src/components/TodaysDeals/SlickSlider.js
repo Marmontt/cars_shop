@@ -26,7 +26,6 @@ const useStyles = makeStyles({
     img: {
         width: '100%',
         height: '100%',
-        opacity: .9,
         margin: 'auto',
     },
     text: {
@@ -36,7 +35,7 @@ const useStyles = makeStyles({
 });
 
 
-const SimpleSlider = () => {
+const SimpleSlider = React.forwardRef(() => {
     const settings = {
         dots: true,
         infinite: true,
@@ -89,6 +88,6 @@ const SimpleSlider = () => {
             </Slider>
         </div>
     );
-};
+});
 
 export default SimpleSlider;
