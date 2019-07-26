@@ -9,31 +9,30 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import {makeStyles} from '@material-ui/styles';
-// import {useDispatch} from 'react-redux';
 
 const useStyles = makeStyles({
     root: {
-        width: 200,
-        height: 200,
         margin: '.6rem',
         border: '1px solid #000',
-        opacity: '1',
+        borderRadius: 10,
     },
     image: {
         width: '100%',
     },
     description: {
-        height: 50,
-        marginTop: -10,
+        height: 90
     },
-    btn: {
-
-    }
+    buttonsArea: {
+        // marginBottom: 10,
+    },
+    text: {
+        marginTop: -10,
+        fontSize: '1.2rem',
+    },
 });
 
 const CarCard = ({BrandName, ModelName, price, img}) => {
-    const {root,btn, image, description} = useStyles();
-    // const dispatch = useDispatch();
+    const {root, buttonsArea, image, description, text} = useStyles();
 
     return (
         <Card className={root}>
@@ -44,20 +43,30 @@ const CarCard = ({BrandName, ModelName, price, img}) => {
                     component='img'
                 />
                 <CardContent className={description}>
-                    <Grid container justify={'space-between'} alignItems={'flex-start'}>
+                    <Grid container direction={'column'} justify={'space-between'} alignItems={'flex-start'}>
                         <Grid item>
-                            <Typography gutterBottom variant="h6">
-                                {`${BrandName} ${ModelName} ${price}$`}
+                            <Typography className={text} gutterBottom variant="h6">
+                                {`Brand: ${BrandName}`}
+                            </Typography>
+                        </Grid>
+                        <Grid item>
+                            <Typography className={text} gutterBottom variant="h6">
+                                {`Model: ${ModelName}`}
+                            </Typography>
+                        </Grid>
+                        <Grid item>
+                            <Typography className={text} gutterBottom variant="h6">
+                                {`Price: ${price}$`}
                             </Typography>
                         </Grid>
                     </Grid>
                 </CardContent>
             </CardActionArea>
-            <CardActions>
-                <Button variant={'outlined'} size="small" color='secondary' className={btn}>
+            <CardActions className={buttonsArea}>
+                <Button variant={'contained'} size="large" color='secondary'>
                     Purchase
                 </Button>
-                <Button variant={'outlined'} size="small" color='secondary' className={btn}>
+                <Button variant={'contained'} size="large" color='secondary'>
                     Details
                 </Button>
             </CardActions>

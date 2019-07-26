@@ -1,16 +1,7 @@
-const initialState = {
-    isReady: false,
-    cars: [],
-};
-
-export default (state = initialState, action) => {
+export default (state = [], action) => {
     switch (action.type) {
         case 'SET_CARS':
-            return {
-                ...state,
-                cars: action.payload,
-                isReady: true,
-            };
+            return action.payload;
         default:
             return state;
     }

@@ -1,8 +1,14 @@
-export const addCar = (car_name, car_price, car_img) => {
+const setCars = (cars) => {
     return {
-        type: 'ADD_CAR',
-        payload: {
-            car_name, car_img, car_price,
-        },
+        type: 'SET_CARS',
+        payload: cars,
+    }
+};
+
+export const getCarsList = () => {
+    return dispatch => {
+        return fetch('/cars')
+            .then(res => res.json(), err => console.log(err))
+            .then(cars_list => dispatch(setCars(cars_list)));
     };
 };

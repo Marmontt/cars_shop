@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Paper from '@material-ui/core/Paper';
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import CarCard from '../CarCard'
+import CarCard from './CarCard'
 import Grid from '@material-ui/core/Grid';
-import auto1 from '../../img/slider/auto1.jpg'
-import auto2 from '../../img/slider/auto2.jpg'
+import {useDispatch, useSelector} from 'react-redux';
+import {getCars} from '../../redux/selectors';
+import {getCarsList} from '../../redux/actions/cars';
 
 const useStyles = makeStyles({
     root: {
@@ -21,51 +22,26 @@ const useStyles = makeStyles({
 
 const CarsList = () => {
     const {root} = useStyles();
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getCarsList());
+    });
+
+    const carsList = useSelector(getCars);
+
     return (
         <Paper className={root}>
             <Grid container justify={'flex-start'}>
-                <Grid item>
-                    <CarCard BrandName={'raq'} price={123} img={auto1} ModelName={'afasf'}/>
-                </Grid>
-                <Grid item>
-                    <CarCard BrandName={'raq1'} price={321} img={auto2} ModelName={'qwert'}/>
-                </Grid>
-                <Grid item>
-                    <CarCard BrandName={'raq1'} price={321} img={auto2} ModelName={'qwert'}/>
-                </Grid>
-                <Grid item>
-                    <CarCard BrandName={'raq1'} price={321} img={auto2} ModelName={'qwert'}/>
-                </Grid>
-                <Grid item>
-                    <CarCard BrandName={'raq1'} price={321} img={auto2} ModelName={'qwert'}/>
-                </Grid>
-                <Grid item>
-                    <CarCard BrandName={'raq1'} price={321} img={auto2} ModelName={'qwert'}/>
-                </Grid>
-                <Grid item>
-                    <CarCard BrandName={'raq1'} price={321} img={auto2} ModelName={'qwert'}/>
-                </Grid>
-                <Grid item>
-                    <CarCard BrandName={'raq1'} price={321} img={auto2} ModelName={'qwert'}/>
-                </Grid>
-                <Grid item>
-                    <CarCard BrandName={'raq1'} price={321} img={auto2} ModelName={'qwert'}/>
-                </Grid>
-                <Grid item>
-                    <CarCard BrandName={'raq1'} price={321} img={auto2} ModelName={'qwert'}/>
-                </Grid>
-                <Grid item>
-                    <CarCard BrandName={'raq1'} price={321} img={auto2} ModelName={'qwert'}/>
-                </Grid>
-                <Grid item>
-                    <CarCard BrandName={'raq1'} price={321} img={auto2} ModelName={'qwert'}/>
-                </Grid>
-                <Grid item>
-                    <CarCard BrandName={'raq1'} price={321} img={auto2} ModelName={'qwert'}/>
-                </Grid>
-                <Grid item>
-                    <CarCard BrandName={'raq1'} price={321} img={auto2} ModelName={'qwert'}/>
-                </Grid>
+                {!carsList.length ?
+                    <Grid container justify={'center'}>
+                        <h1>Loading...</h1>
+                    </Grid> :
+                    carsList.map(({BrandName, ModelName, price, img}) =>
+                        <Grid item xs={4} key={ModelName}>
+                            <CarCard BrandName={BrandName} ModelName={ModelName} price={price} img={img}/>
+                        </Grid>)
+                }
             </Grid>
         </Paper>
     )
