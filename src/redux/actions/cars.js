@@ -7,7 +7,7 @@ const setCars = (cars) => {
 
 export const getCarsList = () => {
     return dispatch => {
-        return fetch('/cars')
+        return fetch('/api/cars')
             .then(res => res.json(), err => console.log(err))
             .then(cars_list => dispatch(setCars(cars_list)));
     };

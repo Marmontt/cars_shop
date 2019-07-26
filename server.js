@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const mongo = require('mongodb').MongoClient;
 
-const port = process.env.PORT || 9000;
+const port = process.env.PORT || 8080;
 const app = express();
 const uri = process.env.ATLAS_URI;
 const mongo_config = {
@@ -11,9 +11,9 @@ const mongo_config = {
 
 app.use(express.static(path.join(__dirname, 'build')));
 
-app.get('/cars', function (req, res) {
+app.get('/api/cars', function (req, res) {
     let cars_list = [];
-    mongo.connect(uri, mongo_config, (err, client) => {
+    mongo.connect(uri,mongo_config, (err, client) => {
         if (err) console.log(err);
         client.db('cars_shop').collection('cars').find().forEach(car => {
             cars_list.push(car);
