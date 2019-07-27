@@ -51,3 +51,7 @@ export const getCarsNumber = (state) => {
     }
     return [Ferrari, Ford, Lamborghini, Maserati, Bentley];
 };
+
+export const getBuyingCars = (state) => state.cart.selectedCars;
+
+export const getTotalCartPrice = (state) => state.cart.totalCarPrice;

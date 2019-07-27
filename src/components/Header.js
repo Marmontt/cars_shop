@@ -7,29 +7,26 @@ import About from './About';
 import Button from '@material-ui/core/Button';
 import TodaysDeals from './TodaysDeals';
 
-const useStyles = makeStyles(theme => {
-    return {
-        root: {
-            // marginLeft: theme.spacing(4),
-            position: 'static',
-        },
-        header: {
-            textAlign: 'justify',
+const useStyles = makeStyles({
+    root: {
+        position: 'static',
+    },
+    header: {
+        textAlign: 'justify',
 
-        },
-        logo: {
-            width: 90,
-            height: 80,
-            cursor: 'pointer',
-            marginLeft: 40,
-        },
-        button: {
-            marginRight: 15,
-        },
-        buttons: {
-            marginRight: 30,
-        }
-    };
+    },
+    logo: {
+        width: 90,
+        height: 80,
+        cursor: 'pointer',
+        marginLeft: 40,
+    },
+    button: {
+        margin: 15,
+    },
+    buttons: {
+        marginRight: 30,
+    }
 });
 
 const Header = () => {
@@ -48,10 +45,11 @@ const Header = () => {
                         Cars list
                     </Button>
                     <TodaysDeals/>
-                    <Button size={'large'} variant={'outlined'} color={'primary'} className={button}>
-                        Warranty
-                    </Button>
                     <About/>
+                    <Button component={Link} to={'/cart'} size={'large'} variant={'outlined'} color={'primary'}
+                            className={button}>
+                        Cart
+                    </Button>
                 </Grid>
             </Grid>
         </div>

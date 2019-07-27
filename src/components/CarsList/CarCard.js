@@ -9,6 +9,8 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import {makeStyles} from '@material-ui/styles';
+import {useDispatch} from 'react-redux';
+import {addCar} from "../../redux/actions/cart";
 
 const useStyles = makeStyles({
     root: {
@@ -33,10 +35,11 @@ const useStyles = makeStyles({
 
 const CarCard = ({BrandName, ModelName, price, img}) => {
     const {root, buttonsArea, image, description, text} = useStyles();
+    const dispatch = useDispatch();
 
     return (
         <Card className={root}>
-            <CardActionArea>
+            <CardActionArea onClick={() => dispatch(addCar(BrandName, ModelName, price, img))}>
                 <CardMedia
                     className={image}
                     image={img}
@@ -63,7 +66,12 @@ const CarCard = ({BrandName, ModelName, price, img}) => {
                 </CardContent>
             </CardActionArea>
             <CardActions className={buttonsArea}>
-                <Button variant={'contained'} size="large" color='secondary'>
+                <Button
+                    onClick={() => dispatch(addCar(BrandName, ModelName, price, img))}
+                    variant={'contained'}
+                    size="large"
+                    color='secondary'
+                >
                     Purchase
                 </Button>
                 <Button variant={'contained'} size="large" color='secondary'>
