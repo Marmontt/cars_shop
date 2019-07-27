@@ -4,7 +4,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 import CarCard from './CarCard'
 import Grid from '@material-ui/core/Grid';
 import {useDispatch, useSelector} from 'react-redux';
-import {getCars} from '../../redux/selectors';
+import {getSelectedCars} from '../../redux/selectors';
 import {getCarsList} from '../../redux/actions/cars';
 
 const useStyles = makeStyles({
@@ -29,7 +29,7 @@ const CarsList = () => {
 // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const carsList = useSelector(getCars);
+    const carsList = useSelector(getSelectedCars);
 
     return (
         <Paper className={root}>

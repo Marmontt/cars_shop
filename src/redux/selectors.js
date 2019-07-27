@@ -2,10 +2,40 @@ export const getTodaysDealsOpenState = (state) => state.todays_deals.td_open;
 
 export const getAboutOpenState = (state) => state.about.a_open;
 
-export const getCars = (state) => state.cars;
+const getAllCars = (state) => state.cars;
+
+export const getFerrariState = (state) => state.chosen_cars.Ferrari;
+export const getFordState = (state) => state.chosen_cars.Ford;
+export const getLamborghiniState = (state) => state.chosen_cars.Lamborghini;
+export const getMaseratiState = (state) => state.chosen_cars.Maserati;
+export const getBentleyState = (state) => state.chosen_cars.Bentley;
+
+
+export const getSelectedCars = (state) => {
+    const selectedCars = [];
+
+    for (let i = 0; i < state.cars.length; ++i) {
+        if (state.chosen_cars.Ferrari && state.cars[i].BrandName === "Ferrari") selectedCars.push(
+            state.cars[i]
+        );
+        else if (state.chosen_cars.Ford && state.cars[i].BrandName === "Ford") selectedCars.push(
+            state.cars[i]
+        );
+        else if (state.chosen_cars.Lamborghini && state.cars[i].BrandName === "Lamborghini") selectedCars.push(
+            state.cars[i]
+        );
+        else if (state.chosen_cars.Maserati && state.cars[i].BrandName === "Maserati") selectedCars.push(
+            state.cars[i]
+        );
+        else if (state.chosen_cars.Bentley && state.cars[i].BrandName === "Bentley") selectedCars.push(
+            state.cars[i]
+        );
+    }
+    return selectedCars;
+};
 
 export const getCarsNumber = (state) => {
-    const cars_list = getCars(state);
+    const cars_list = getAllCars(state);
 
     let Ferrari = 0;
     let Ford = 0;
@@ -19,5 +49,5 @@ export const getCarsNumber = (state) => {
         else if (cars_list[i].BrandName === 'Maserati') Maserati++;
         else Bentley++;
     }
-    return [Ferrari, Ford, Lamborghini, Maserati, Bentley]
+    return [Ferrari, Ford, Lamborghini, Maserati, Bentley];
 };
