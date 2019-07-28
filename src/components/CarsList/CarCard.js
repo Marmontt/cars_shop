@@ -33,13 +33,13 @@ const useStyles = makeStyles({
     },
 });
 
-const CarCard = ({BrandName, ModelName, price, img}) => {
+const CarCard = ({BrandName: brand, ModelName: model, price, img}) => {
     const {root, buttonsArea, image, description, text} = useStyles();
     const dispatch = useDispatch();
 
     return (
         <Card className={root}>
-            <CardActionArea onClick={() => dispatch(addCar(BrandName, ModelName, price, img))}>
+            <CardActionArea onClick={() => dispatch(addCar(brand, model, price, img))}>
                 <CardMedia
                     className={image}
                     image={img}
@@ -49,12 +49,12 @@ const CarCard = ({BrandName, ModelName, price, img}) => {
                     <Grid container direction={'column'} justify={'space-between'} alignItems={'flex-start'}>
                         <Grid item>
                             <Typography className={text} gutterBottom variant="h6">
-                                {`Brand: ${BrandName}`}
+                                {`Brand: ${brand}`}
                             </Typography>
                         </Grid>
                         <Grid item>
                             <Typography className={text} gutterBottom variant="h6">
-                                {`Model: ${ModelName}`}
+                                {`Model: ${model}`}
                             </Typography>
                         </Grid>
                         <Grid item>
@@ -67,7 +67,7 @@ const CarCard = ({BrandName, ModelName, price, img}) => {
             </CardActionArea>
             <CardActions className={buttonsArea}>
                 <Button
-                    onClick={() => dispatch(addCar(BrandName, ModelName, price, img))}
+                    onClick={() => dispatch(addCar(brand, model, price, img))}
                     variant={'contained'}
                     size="large"
                     color='secondary'

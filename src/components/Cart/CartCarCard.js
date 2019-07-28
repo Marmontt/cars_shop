@@ -35,7 +35,7 @@ const useStyles = makeStyles({
     },
 });
 
-const CartCarCard = ({BrandName, ModelName, price, img, count}) => {
+const CartCarCard = ({BrandName: brand, ModelName: model, price, img, count}) => {
     const {root, image, text, countStyle, totalPriceStyle} = useStyles();
     const dispatch = useDispatch();
 
@@ -50,10 +50,10 @@ const CartCarCard = ({BrandName, ModelName, price, img, count}) => {
                         <Grid item className={text}>
                             <Grid item>
                                 <Typography>
-                                    {`Brand: ${BrandName}`}
+                                    {`Brand: ${brand}`}
                                 </Typography>
                                 <Typography>
-                                    {`Model: ${ModelName}`}
+                                    {`Model: ${model}`}
                                 </Typography>
                                 <Typography>
                                     {`Price: ${price}$`}
@@ -62,7 +62,7 @@ const CartCarCard = ({BrandName, ModelName, price, img, count}) => {
                             <Grid item className={countStyle}>
                                 <Grid container alignItems={'center'} justify={'center'}>
                                     <Grid item>
-                                        <IconButton onClick={() => dispatch(removeCar(ModelName, price))}
+                                        <IconButton onClick={() => dispatch(removeCar(model, price))}
                                                     color={'secondary'}>
                                             <IndeterminateCheckBox/>
                                         </IconButton>
@@ -73,7 +73,7 @@ const CartCarCard = ({BrandName, ModelName, price, img, count}) => {
                                         </Typography>
                                     </Grid>
                                     <Grid item>
-                                        <IconButton onClick={() => dispatch(addCar(BrandName, ModelName, price, img))}
+                                        <IconButton onClick={() => dispatch(addCar(brand, model, price, img))}
                                                     color={'secondary'}>
                                             <AddBox/>
                                         </IconButton>

@@ -38,9 +38,9 @@ const CarsList = () => {
                     <Grid container justify={'center'}>
                         <h1>Loading...</h1>
                     </Grid> :
-                    carsList.map(({BrandName, ModelName, price, img}) =>
-                        <Grid item xs={4} key={ModelName}>
-                            <CarCard BrandName={BrandName} ModelName={ModelName} price={price} img={img}/>
+                    carsList.map(({BrandName, ModelName: model, price, img}) =>
+                        <Grid item xs={4} key={model}>
+                            <CarCard BrandName={BrandName} ModelName={model} price={price} img={img}/>
                         </Grid>)}
             </Grid>
         </Paper>
