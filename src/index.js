@@ -27,7 +27,7 @@ const theme = createMuiTheme({
 });
 
 const body = document.getElementsByTagName("body")[0];
-body.style.background = "url(https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fw-dog.net%2Fwallpapers%2F0%2F11%2F323723122114199.jpg&f=1) no-repeat fixed center center";
+body.style.background = "url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.hdwallpapers.in%2Fdownload%2Fblack_car_android_stock-HD.jpg&f=1&nofb=1) no-repeat fixed center center";
 body.style.backgroundSize = 'cover';
 
 ReactDOM.render(

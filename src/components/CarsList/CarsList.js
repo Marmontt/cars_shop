@@ -26,7 +26,6 @@ const CarsList = () => {
 
     useEffect(() => {
         dispatch(getCarsList());
-// eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const carsList = useSelector(getSelectedCars);
